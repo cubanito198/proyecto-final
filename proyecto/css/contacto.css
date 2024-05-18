@@ -1,0 +1,146 @@
+/*contacto*/
+ /* styles.css */
+body {
+    font-family: 'Quicksand', sans-serif; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif; 
+}
+
+p, ul, ol, li, a {
+    font-family: 'Quicksand', sans-serif; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url('bosque.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para que cubra toda la pantalla */
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+}
+
+
+ 
+.contact .main-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(116, 116, 116);
+}
+.contact .boton{
+    background-color: white;
+    color: grey;
+}
+main {
+  margin-top:20px 0px;
+    display: flex;
+    justify-content: center; /* Centra el contenido principal */
+    align-items: center; /* Centra el contenido principal */
+    height: calc(100vh - 160px); /* Ajusta la altura disponible menos el tamaño del header y footer */
+}
+
+.contact {
+    background-color:#ffffffb6;
+    text-align: center;
+    margin-top: 0px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 90%; /* Ancho por defecto */
+    max-width: 400px; /* Ancho máximo del formulario */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact form input, .contact form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contact form button:hover {
+    background-color: rgb(185, 185, 185);
+}
+header {
+    background-color: #a3a3a300;
+    color: white;
+    padding: 10px 0;
+    
+}
+header nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    margin: 20px 0;
+}
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: rgba(76, 175, 79, 0);
+    color: white;
+    margin-top: 20px;
+    margin-top: auto;
+}
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    list-style-type: none; /* Quita los estilos de lista (viñetas) */
+    padding: 0;
+    margin: 20px;
+}
+
+.menu li {
+    margin-right: 60px; /* Ajusta el espacio entre los enlaces */
+}
+
+.menu li:first-child {
+    margin-left: 0; /* Elimina el margen izquierdo para el primer enlace */
+}
+
+/*contacto*/

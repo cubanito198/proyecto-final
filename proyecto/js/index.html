@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz de Administración</title>
+</head>
+<body>
+    <h1>Interfaz de Administración</h1>
+    
+    <!-- Formulario para agregar registro -->
+    <h2>Agregar Registro</h2>
+    <form id="formulario-agregar">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo"><br><br>
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea><br><br>
+        <button type="submit">Agregar Registro</button>
+    </form>
+
+    <!-- Div para mostrar la respuesta del servidor -->
+    <div id="respuesta"></div>
+
+    <!-- Botones para ver, actualizar y eliminar registros -->
+    <h2>Operaciones</h2>
+    <button onclick="cargarRegistros()">Ver Registros</button>
+  
+
+    <!-- Sección para ver registros -->
+    <h2>Registros</h2>
+    <ul id="lista-registros"></ul>
+
+
+    <!-- Formulario para eliminar registro (inicialmente oculto) -->
+    
+
+    <script>
+        // Función para cargar y mostrar los registros
+        function cargarRegistros() {
+            fetch('../servidor/obtener_datos.php')
+            .then(response => response.json())
+            .then(data => {
+                const listaRegistros = document.getElementById('lista-registros');
+                listaRegistros.innerHTML = ''; // Limpiar la lista antes de agregar nuevos registros
+                data.forEach(registro => {
+                    const itemLista = document.createElement('li');
+                    itemLista.textContent = `${registro.nombre} - ${registro.correo} - ${registro.mensaje}`;
+                    listaRegistros.appendChild(itemLista);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar los registros:', error);
+            });
+        }
+        // Manejador de eventos para el formulario de agregar registro
+        document.getElementById('formulario-agregar').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+            const formData = new FormData(this);
+
+            fetch('../servidor/inserta.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('respuesta').textContent = data;
+                // Recargar la lista de registros después de agregar uno nuevo
+                cargarRegistros();
+            })
+            .catch(error => {
+                console.error('Error al enviar la solicitud:', error);
+            });
+        });
+
+
+
+    // En este caso, el nombre del campo en el formulario es 'nombre'
+    fetch('../servidor/eliminar.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('respuesta').textContent = data;
+        // Ocultar el formulario después de eliminar el registro
+        document.getElementById('formulario-eliminar').style.display = 'none';
+        // Recargar la lista de registros después de eliminar
+        cargarRegistros();
+    })
+    .catch(error => {
+        console.error('Error al enviar la solicitud:', error);
+    });
+
+
+    </script>
+</body>
+</html>
+
+
